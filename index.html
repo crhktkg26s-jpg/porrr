@@ -7,13 +7,13 @@
   
   <!-- Шрифт Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg: #f8fafc;
-      --surface: rgba(255, 255, 255, 0.85);
+      --surface: rgba(255, 255, 255, 0.88);
       --border: rgba(226, 232, 240, 0.85);
       --border-hover: rgba(2, 132, 199, 0.4);
       --text-main: #0f172a;
@@ -21,8 +21,8 @@
       --accent: #0284c7;
       --accent-glow: rgba(2, 132, 199, 0.15);
       --radius: 20px;
-      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-      --shadow-hover: 0 20px 40px -15px rgba(2, 132, 199, 0.16), 0 0 1px rgba(0,0,0,0.1);
+      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+      --shadow-hover: 0 20px 40px -15px rgba(2, 132, 199, 0.16);
     }
 
     * {
@@ -48,7 +48,7 @@
       padding: 0 24px;
     }
 
-    /* Навигация */
+    /* Хедер */
     header {
       padding: 20px 0;
       position: sticky;
@@ -57,6 +57,7 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+      background: rgba(248, 250, 252, 0.7);
     }
 
     .nav-wrap {
@@ -97,7 +98,7 @@
 
     /* Hero */
     .hero {
-      padding: 90px 0 50px;
+      padding: 80px 0 50px;
       text-align: center;
     }
 
@@ -215,7 +216,7 @@
 
     .section-header {
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 36px;
     }
 
     .section-title {
@@ -230,43 +231,11 @@
       font-size: 1rem;
     }
 
-    /* Фильтры */
-    .filter-bar {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 36px;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 8px 18px;
-      border-radius: 999px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .filter-btn:hover {
-      color: var(--text-main);
-      border-color: var(--border-hover);
-    }
-
-    .filter-btn.active {
-      background: #0f172a;
-      color: #fff;
-      border-color: #0f172a;
-    }
-
-    /* Сетка кейсов */
+    /* Сетка */
     .grid-cases {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 32px;
     }
 
     .case-card {
@@ -281,49 +250,29 @@
       flex-direction: column;
     }
 
-    .case-card.hidden {
-      display: none;
-    }
-
     .case-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-4px);
       border-color: var(--border-hover);
       box-shadow: var(--shadow-hover);
     }
 
-    .case-preview {
-      width: 100%;
-      height: 220px;
-      background: linear-gradient(135deg, #e0f2fe 0%, #f1f5f9 100%);
+    /* Встроенный плеер видео прямо в карточке */
+    .case-video-wrap {
       position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 */
+      background: #000;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
+      border-bottom: 1px solid var(--border);
     }
 
-    .play-circle {
-      width: 54px;
-      height: 54px;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-      transition: transform 0.25s ease, background-color 0.2s ease;
-    }
-
-    .case-card:hover .play-circle {
-      transform: scale(1.12);
-      background: #fff;
-    }
-
-    .play-circle svg {
-      margin-left: 3px;
-      fill: var(--accent);
+    .case-video-wrap iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
     .case-body {
@@ -362,86 +311,30 @@
     .case-desc {
       font-size: 0.9rem;
       color: var(--text-muted);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       flex-grow: 1;
     }
 
-    .case-btn {
+    .case-link-ext {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       color: var(--accent);
+      font-size: 0.88rem;
       font-weight: 600;
       text-decoration: none;
-      font-size: 0.92rem;
       transition: gap 0.2s ease;
-      cursor: pointer;
     }
 
-    .case-btn:hover {
+    .case-link-ext:hover {
       gap: 10px;
+      text-decoration: underline;
     }
 
-    /* Модальное окно */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(10px);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal-content {
-      position: relative;
-      width: 100%;
-      max-width: 920px;
-      background: #000;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 38px;
-      height: 38px;
-      background: rgba(255,255,255,0.2);
-      border: none;
-      border-radius: 50%;
-      color: #fff;
-      font-size: 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-      backdrop-filter: blur(6px);
-      transition: background 0.2s;
-    }
-
-    .modal-close:hover {
-      background: rgba(255,255,255,0.4);
-    }
-
-    .iframe-wrap {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-    }
-
-    .iframe-wrap iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
+    /* Акцентная карточка для финального блока ассистента */
+    .case-card.final-highlight {
+      border: 1px solid rgba(2, 132, 199, 0.4);
+      background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(240, 249, 255, 0.8) 100%);
     }
 
     /* Футер */
@@ -509,7 +402,7 @@
 
     @media (max-width: 768px) {
       .hero {
-        padding: 60px 0 35px;
+        padding: 50px 0 30px;
       }
       .grid-cases {
         grid-template-columns: 1fr;
@@ -534,14 +427,14 @@
         <span class="status-dot"></span> Available for Projects
       </div>
       <h1>NURLAN ERTILEU</h1>
-      <p>Cinematographer & Video Editor. Коммерческая видеосъемка, спортивные и корпоративные ивенты, музыкальные видео и вирусные Reels под ключ.</p>
+      <p>Cinematographer & Video Editor. Коммерческая видеосъемка, спорт, ивенты, танцевальные промо и вертикальный контент под ключ.</p>
       
       <div class="hero-actions">
         <a href="#cases" class="btn-main">Смотреть работы</a>
         <a href="https://wa.me/77007630636" target="_blank" class="btn-secondary">Обсудить проект</a>
       </div>
 
-      <!-- Сетап -->
+      <!-- Оборудование -->
       <div class="specs-bar">
         <div class="spec-item">
           <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -565,167 +458,140 @@
       </div>
     </section>
 
-    <!-- Кейсы -->
+    <!-- Секция кейсов -->
     <section id="cases" class="cases-section">
       <div class="section-header">
-        <h2 class="section-title">Selected Works</h2>
-        <p class="section-subtitle">Кликните на работу для мгновенного просмотра ролика</p>
-      </div>
-
-      <!-- Кнопки фильтрации -->
-      <div class="filter-bar">
-        <button class="filter-btn active" onclick="filterCases('all')">Все работы (8)</button>
-        <button class="filter-btn" onclick="filterCases('commercial')">Реклама & Promo</button>
-        <button class="filter-btn" onclick="filterCases('events')">Ивенты & Спорт</button>
-        <button class="filter-btn" onclick="filterCases('production')">Reels & Площадка</button>
+        <h2 class="section-title">Showcase / Видеоролики</h2>
+        <p class="section-subtitle">Все видео можно воспроизвести прямо на сайте</p>
       </div>
 
       <div class="grid-cases">
 
-        <!-- РАЗДЕЛ 1: COMMERCIAL & PROMO -->
-        <!-- Магазин косметики -->
-        <div class="case-card" data-cat="commercial">
-          <div class="case-preview" onclick="openPlayer('1b59K98T35f-xxq5zKknZd9ID84loH9Dk')">
-            <div class="play-circle">
-              <svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+        <!-- 1. Имиджевое видео для магазина косметики -->
+        <div class="case-card">
+          <div class="case-video-wrap">
+            <iframe src="https://drive.google.com/file/d/1b59K98T35f-xxq5zKknZd9ID84loH9Dk/preview" allow="autoplay" allowfullscreen></iframe>
           </div>
           <div class="case-body">
             <div class="case-tags">
               <span class="tag">Commercial</span>
               <span class="tag">Beauty / Promo</span>
             </div>
-            <h3 class="case-title">Имиджевое видео: Магазин косметики</h3>
-            <p class="case-desc">Работа с мягким бьюти-светом, кинематографичный фокус на деталях и премиальная колористика.</p>
-            <span class="case-btn" onclick="openPlayer('1b59K98T35f-xxq5zKknZd9ID84loH9Dk')">Воспроизвести ролик &rarr;</span>
+            <h3 class="case-title">Имиджевое видео для магазина косметики</h3>
+            <p class="case-desc">Мягкий свет, фокус на деталях и текстурах, чистый грейдинг и премиальное позиционирование бренда.</p>
+            <a href="https://drive.google.com/file/d/1b59K98T35f-xxq5zKknZd9ID84loH9Dk/view" target="_blank" class="case-link-ext">Открыть в полном окне &rarr;</a>
           </div>
         </div>
 
-        <!-- Студия танцев 1 -->
-        <div class="case-card" data-cat="commercial">
-          <div class="case-preview" onclick="openPlayer('1H-kt2f-u0tDZPfZIFaAORNcku_a8WObw')">
-            <div class="play-circle">
-              <svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+        <!-- 2. Имиджевое видео для студии танцев 1 -->
+        <div class="case-card">
+          <div class="case-video-wrap">
+            <iframe src="https://drive.google.com/file/d/1H-kt2f-u0tDZPfZIFaAORNcku_a8WObw/preview" allow="autoplay" allowfullscreen></iframe>
           </div>
           <div class="case-body">
             <div class="case-tags">
               <span class="tag">Promo</span>
               <span class="tag">Dance / Music</span>
             </div>
-            <h3 class="case-title">Dance Studio Promo (Part I)</h3>
-            <p class="case-desc">Синхронизация хореографии и музыкального бита, атмосферный неоновый свет и пластика движения камеры.</p>
-            <span class="case-btn" onclick="openPlayer('1H-kt2f-u0tDZPfZIFaAORNcku_a8WObw')">Воспроизвести ролик &rarr;</span>
+            <h3 class="case-title">Имиджевое видео для студии танцев (Part I)</h3>
+            <p class="case-desc">Пластика движений под бит трека, контрастный атмосферный свет и кинематографичная композиция.</p>
+            <a href="https://drive.google.com/file/d/1H-kt2f-u0tDZPfZIFaAORNcku_a8WObw/view" target="_blank" class="case-link-ext">Открыть в полном окне &rarr;</a>
           </div>
         </div>
 
-        <!-- Студия танцев 2 -->
-        <div class="case-card" data-cat="commercial">
-          <div class="case-preview" onclick="openPlayer('1-KoWm9nrsCa730NBUkeBcgc9Gto95Y5o')">
-            <div class="play-circle">
-              <svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+        <!-- 3. Имиджевое видео для студии танцев 2 -->
+        <div class="case-card">
+          <div class="case-video-wrap">
+            <iframe src="https://drive.google.com/file/d/1-KoWm9nrsCa730NBUkeBcgc9Gto95Y5o/preview" allow="autoplay" allowfullscreen></iframe>
           </div>
           <div class="case-body">
             <div class="case-tags">
               <span class="tag">Promo</span>
               <span class="tag">Choreography</span>
             </div>
-            <h3 class="case-title">Dance Studio Promo (Part II)</h3>
-            <p class="case-desc">Динамичная смена планов, акцент на экспрессии танцоров и плотный ритмический монтаж.</p>
-            <span class="case-btn" onclick="openPlayer('1-KoWm9nrsCa730NBUkeBcgc9Gto95Y5o')">Воспроизвести ролик &rarr;</span>
+            <h3 class="case-title">Имиджевое видео для студии танцев (Part II)</h3>
+            <p class="case-desc">Быстрая динамика камеры, ритмичный монтаж и передача экспрессии хореографии.</p>
+            <a href="https://drive.google.com/file/d/1-KoWm9nrsCa730NBUkeBcgc9Gto95Y5o/view" target="_blank" class="case-link-ext">Открыть в полном окне &rarr;</a>
           </div>
         </div>
 
-        <!-- РАЗДЕЛ 2: SPORT & EVENTS -->
-        <!-- Футбольный клуб -->
-        <div class="case-card" data-cat="events">
-          <div class="case-preview" onclick="openPlayer('1MH7AcPgZNl_2_qM2TgJrJSpe02TA3fnS')">
-            <div class="play-circle">
-              <svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+        <!-- 4. Отчетное видео для футбольного клуба -->
+        <div class="case-card">
+          <div class="case-video-wrap">
+            <iframe src="https://drive.google.com/file/d/1MH7AcPgZNl_2_qM2TgJrJSpe02TA3fnS/preview" allow="autoplay" allowfullscreen></iframe>
           </div>
           <div class="case-body">
             <div class="case-tags">
-              <span class="tag">Sport Event</span>
-              <span class="tag">Football Match</span>
+              <span class="tag">Sport</span>
+              <span class="tag">Matchday</span>
             </div>
-            <h3 class="case-title">Matchday: Футбольный клуб</h3>
-            <p class="case-desc">Спортивный репортаж с поля: накал борьбы, эмоции фанатского сектора, скорость и живой звук.</p>
-            <span class="case-btn" onclick="openPlayer('1MH7AcPgZNl_2_qM2TgJrJSpe02TA3fnS')">Воспроизвести ролик &rarr;</span>
+            <h3 class="case-title">Отчетное видео для футбольного клуба</h3>
+            <p class="case-desc">Энергичный спортивный репортаж: опасные моменты матча, эмоции трибун и мощная звуковая динамика.</p>
+            <a href="https://drive.google.com/file/d/1MH7AcPgZNl_2_qM2TgJrJSpe02TA3fnS/view" target="_blank" class="case-link-ext">Открыть в полном окне &rarr;</a>
           </div>
         </div>
 
-        <!-- Хоккейный клуб -->
-        <div class="case-card" data-cat="events">
-          <div class="case-preview" onclick="openPlayer('1wD-YEaewblRL-VKS-_edk9_egLvhOWYj')">
-            <div class="play-circle">
-              <svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+        <!-- 5. Отчетное видео для хоккейного клуба -->
+        <div class="case-card">
+          <div class="case-video-wrap">
+            <iframe src="https://drive.google.com/file/d/1wD-YEaewblRL-VKS-_edk9_egLvhOWYj/preview" allow="autoplay" allowfullscreen></iframe>
           </div>
           <div class="case-body">
             <div class="case-tags">
-              <span class="tag">Sport Event</span>
+              <span class="tag">Sport</span>
               <span class="tag">Ice Hockey</span>
             </div>
-            <h3 class="case-title">Game Recap: Хоккейный клуб</h3>
-            <p class="case-desc">Съемка ледовых скоростей, мощных силовых приемов и драматичной развязки встречи.</p>
-            <span class="case-btn" onclick="openPlayer('1wD-YEaewblRL-VKS-_edk9_egLvhOWYj')">Воспроизвести ролик &rarr;</span>
+            <h3 class="case-title">Отчетное видео для хоккейного клуба</h3>
+            <p class="case-desc">Высокая скорость льда, жесткие стыки, плотный темп монтажа и передача духа ледовой арены.</p>
+            <a href="https://drive.google.com/file/d/1wD-YEaewblRL-VKS-_edk9_egLvhOWYj/view" target="_blank" class="case-link-ext">Открыть в полном окне &rarr;</a>
           </div>
         </div>
 
-        <!-- День Металлурга -->
-        <div class="case-card" data-cat="events">
-          <div class="case-preview" onclick="openPlayer('1Z2Lm4n_YLe8UDSK7GUQdI1guL3qbj-79')">
-            <div class="play-circle">
-              <svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+        <!-- 6. Отчетное видео на День металлурга -->
+        <div class="case-card">
+          <div class="case-video-wrap">
+            <iframe src="https://drive.google.com/file/d/1Z2Lm4n_YLe8UDSK7GUQdI1guL3qbj-79/preview" allow="autoplay" allowfullscreen></iframe>
           </div>
           <div class="case-body">
             <div class="case-tags">
               <span class="tag">Big Event</span>
-              <span class="tag">Festival / Concert</span>
+              <span class="tag">Aftermovie</span>
             </div>
-            <h3 class="case-title">Aftermovie: День металлурга</h3>
-            <p class="case-desc">Масштабное городское шоу, сцена, световое оформление и живой энергетический поток праздника.</p>
-            <span class="case-btn" onclick="openPlayer('1Z2Lm4n_YLe8UDSK7GUQdI1guL3qbj-79')">Воспроизвести ролик &rarr;</span>
+            <h3 class="case-title">Отчетное видео на День металлурга</h3>
+            <p class="case-desc">Многотысячный городской масштаб, работа со сценическим светом, живая публика и шоу-программа.</p>
+            <a href="https://drive.google.com/file/d/1Z2Lm4n_YLe8UDSK7GUQdI1guL3qbj-79/view" target="_blank" class="case-link-ext">Открыть в полном окне &rarr;</a>
           </div>
         </div>
 
-        <!-- РАЗДЕЛ 3: SOCIAL & SET PRODUCTION -->
-        <!-- Reels блогер -->
-        <div class="case-card" data-cat="production">
-          <div class="case-preview" onclick="openPlayer('1Fw0u2RKkMHkBxZtQjaeZyd7fPn463OHo')">
-            <div class="play-circle">
-              <svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+        <!-- 7. Reels для блогера -->
+        <div class="case-card">
+          <div class="case-video-wrap">
+            <iframe src="https://drive.google.com/file/d/1Fw0u2RKkMHkBxZtQjaeZyd7fPn463OHo/preview" allow="autoplay" allowfullscreen></iframe>
           </div>
           <div class="case-body">
             <div class="case-tags">
-              <span class="tag">Vertical Video</span>
+              <span class="tag">Social Media</span>
               <span class="tag">Reels / Shorts</span>
             </div>
             <h3 class="case-title">Reels для блогера</h3>
-            <p class="case-desc">Вертикальный формат с высокой глубиной просмотра: цепляющий хук, саунд-дизайн и трендовый монтаж.</p>
-            <span class="case-btn" onclick="openPlayer('1Fw0u2RKkMHkBxZtQjaeZyd7fPn463OHo')">Воспроизвести ролик &rarr;</span>
+            <p class="case-desc">Вертикальный контент под алгоритмы: хук на первых секундах, четкий тайминг и удержание внимания.</p>
+            <a href="https://drive.google.com/file/d/1Fw0u2RKkMHkBxZtQjaeZyd7fPn463OHo/view" target="_blank" class="case-link-ext">Открыть в полном окне &rarr;</a>
           </div>
         </div>
 
-        <!-- Гаффер / Ассистент -->
-        <div class="case-card" data-cat="production">
-          <div class="case-preview" onclick="openPlayer('13oCEYQJttqztR34Q9nP7Tm0utLoCjwkj')">
-            <div class="play-circle">
-              <svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+        <!-- 8. АССИСТЕНТ ОПЕРАТОРА И ГАФФЕР (ПОСТАВЛЕНО В КОНЕЦ) -->
+        <div class="case-card final-highlight">
+          <div class="case-video-wrap">
+            <iframe src="https://drive.google.com/file/d/13oCEYQJttqztR34Q9nP7Tm0utLoCjwkj/preview" allow="autoplay" allowfullscreen></iframe>
           </div>
           <div class="case-body">
             <div class="case-tags">
-              <span class="tag">Production</span>
+              <span class="tag" style="background:#0284c7; color:#fff;">On Set Experience</span>
               <span class="tag">Lighting / AC</span>
             </div>
-            <h3 class="case-title">Gaffer & Assistant Camera</h3>
-            <p class="case-desc">Работа с профессиональным осветительным оборудованием на съемочной площадке, выставление рисунка света и фокуса.</p>
-            <span class="case-btn" onclick="openPlayer('13oCEYQJttqztR34Q9nP7Tm0utLoCjwkj')">Воспроизвести ролик &rarr;</span>
+            <h3 class="case-title">Ассистент оператора и гаффер</h3>
+            <p class="case-desc">Практика на съемочной площадке: работа со световыми приборами, построение свето-теневого рисунка, помощь оператору-постановщику и фокус-пуллинг.</p>
+            <a href="https://drive.google.com/file/d/13oCEYQJttqztR34Q9nP7Tm0utLoCjwkj/view" target="_blank" class="case-link-ext">Открыть в полном окне &rarr;</a>
           </div>
         </div>
 
@@ -733,22 +599,12 @@
     </section>
   </main>
 
-  <!-- Модальное окно для встроенного видео -->
-  <div id="videoModal" class="modal" onclick="closePlayer(event)">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closePlayerBtn()">&times;</button>
-      <div class="iframe-wrap">
-        <iframe id="videoIframe" src="" allow="autoplay" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-
   <!-- Футер -->
   <footer>
     <div class="container">
       <div class="contacts-box">
         <h2>Let's collaborate</h2>
-        <p>Готов к проектам в качестве оператора-постановщика, режиссера монтажа или гаффера на вашей съемочной площадке.</p>
+        <p>Готов подключиться к вашему проекту как оператор-постановщик, режиссер монтажа или гаффер на площадке.</p>
 
         <div class="social-links">
           <a href="https://wa.me/77007630636" target="_blank" class="social-btn">
@@ -758,7 +614,7 @@
             <span>Instagram (@nurlan.ertileu)</span>
           </a>
           <a href="https://drive.google.com/drive/folders/19aMw5d_KoFjQevYi6fjYq9iJMk-CLTJh?usp=sharing" target="_blank" class="social-btn">
-            <span>Все файлы на Google Drive</span>
+            <span>Вся папка на Google Drive</span>
           </a>
         </div>
       </div>
@@ -769,52 +625,5 @@
     </div>
   </footer>
 
-  <!-- Скрипты плеера и фильтрации -->
-  <script>
-    // Модальный плеер
-    const modal = document.getElementById('videoModal');
-    const iframe = document.getElementById('videoIframe');
-
-    function openPlayer(fileId) {
-      iframe.src = `https://drive.google.com/file/d/${fileId}/preview`;
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closePlayerBtn() {
-      iframe.src = '';
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    function closePlayer(e) {
-      if (e.target === modal) {
-        closePlayerBtn();
-      }
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.style.display === 'flex') {
-        closePlayerBtn();
-      }
-    });
-
-    // Фильтрация кейсов
-    function filterCases(category) {
-      const cards = document.querySelectorAll('.case-card');
-      const buttons = document.querySelectorAll('.filter-btn');
-
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-
-      cards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-cat') === category) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    }
-  </script>
 </body>
 </html>
